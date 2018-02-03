@@ -10,8 +10,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
-        Toast.makeText(this, "github is awesome", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Yeah Accepted", Toast.LENGTH_SHORT).show();
+
+
+
     }
 }
