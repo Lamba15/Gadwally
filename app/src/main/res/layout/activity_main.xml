@@ -37,6 +37,10 @@
             android:hint="Username"
             android:textColor="#fff"
             android:textColorHint="#dddddd"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+
             />
 
         <View
@@ -55,7 +59,10 @@
             android:gravity="center"
             android:hint="Password"
             android:textColor="#fff"
-            android:textColorHint="#dddddd" />
+            android:textColorHint="#dddddd"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"/>
 
 
     </LinearLayout>
