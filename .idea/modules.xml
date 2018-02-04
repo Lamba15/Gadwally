@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Gadwally.iml" filepath="$PROJECT_DIR$/Gadwally.iml" />
-      <module fileurl="file://D:\Android\Android projects\Training Projects\Gadwally\Gadwally.iml" filepath="D:\Android\Android projects\Training Projects\Gadwally\Gadwally.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Android\Android projects\Training Projects\Gadwally\app\app.iml" filepath="D:\Android\Android projects\Training Projects\Gadwally\app\app.iml" />
     </modules>
   </component>
 </project>
