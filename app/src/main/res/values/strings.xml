@@ -16,4 +16,25 @@
     <string name="or">OR</string>
     <string name="forget_password">do you Forget Password?</string>
     <string name="system_your_day">System your Day</string>
+    <string name="title_activity_main__interface">Main_Interface</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="admin">admin</string>
+    <string name="system_your_life">System your Life</string>
+    <string name="mr_admin">Mr.Admin</string>
+    <string name="admin000_admin_com">admin000@admin.com</string>
+    <string name="my_profile">My Profile</string>
+    <string name="weekly_table">Weekly Table</string>
+    <string name="daily_table">Daily Table</string>
+    <string name="help_feedback"><![CDATA[Help & Feedback]]></string>
+    <string name="contact_us">Contact Us</string>
+    <string name="about_us">About Us</string>
+    <string name="log_out">Log Out</string>
+    <string name="save_contact">Save Contact</string>
+    <string name="func_image">View Func Image</string>
+    <string name="func_name">Function Title</string>
+    <string name="func_desc">Function Description</string>
 </resources>

@@ -27,12 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_account_circle"
             android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_account_circle"
             android:hint="@string/login_username"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:maxLines="1"
+            android:text="@string/admin"
             android:textColor="#fff"
             android:textColorHint="#b6b3b3"
 
@@ -49,12 +50,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_lock_open"
             android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_lock_open"
             android:hint="@string/login_password"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1"
+            android:text="@string/admin"
             android:textColor="#fff"
             android:textColorHint="#b6b3b3" />
 
@@ -69,16 +71,16 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear1"
-        >
+        app:layout_constraintTop_toBottomOf="@id/linear1">
+
         <LinearLayout
             android:id="@+id/lineartext"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="5dp"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
@@ -94,45 +96,47 @@
                 android:layout_height="wrap_content"
                 android:text="@string/create_new_account"
                 android:textColor="@color/textcolor"
-                android:textSize="9sp"
-                />
+                android:textSize="9sp" />
         </LinearLayout>
+
         <View
-            android:padding="5dp"
             android:layout_width="172.5dp"
             android:layout_height="2dp"
-           android:layout_alignParentBottom="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="#ffffff" />
+            android:background="#ffffff"
+            android:padding="5dp" />
 
         <TextView
             android:id="@+id/or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
             android:layout_toStartOf="@+id/lineartext"
             android:text="@string/or"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
 
             android:textColor="#ffeeee"
             android:textSize="13sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/forget_password"
             android:textColor="@color/textcolor"
-            android:textSize="10.5sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="10.5sp" />
+
         <View
-            android:padding="5dp"
             android:layout_width="105dp"
             android:layout_height="2dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/or"
-            android:background="#ffffff" />
+            android:background="#ffffff"
+            android:padding="5dp" />
     </RelativeLayout>
 
 
@@ -170,21 +174,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:textSize="15sp"
-        android:textColor="#151515"
-        android:textStyle="bold"
         android:text="@string/system_your_day"
+        android:textColor="#151515"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"/>
+        app:layout_constraintTop_toBottomOf="@id/imageView2" />
 
     <TextView
         android:id="@+id/mydesc2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:text="System your Life"
+        android:text="@string/system_your_life"
         android:textColor="#151515"
         android:textSize="25sp"
         android:textStyle="bold|italic"
