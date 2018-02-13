@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         regdialog.dismiss();
+
                     }
                 });
                 submit.setOnClickListener(new View.OnClickListener() {
