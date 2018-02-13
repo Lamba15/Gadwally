@@ -19,7 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register" />
+        <activity
+            android:name=".Main_Interface"
+            android:label="@string/title_activity_main__interface"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Interface" />
     </application>
 
 </manifest>

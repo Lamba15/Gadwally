@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,7 +68,14 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Dos 3la Create Account kda", Toast.LENGTH_SHORT).show();
+                EditText username  = findViewById(R.id.username);
+                EditText password  = findViewById(R.id.password);
+                if (username.getText().toString().equals("admin") &&
+                        password.getText().toString().equals("admin")){
+                    Toast.makeText(MainActivity.this, "Login Successful >>>", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this , Main_Interface.class));
+
+                }
 
             }
         });

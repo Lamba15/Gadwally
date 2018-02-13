@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/slider_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#9aecde8f">
+    <ImageView
+        android:id="@+id/func_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/weekly1"
+        android:contentDescription="@string/func_image"
+        android:layout_marginBottom="15dp"/>
+    <TextView
+        android:id="@+id/func_text"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:text="@string/func_name"
+        android:textColor="#0028ac"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"/>
+    <TextView
+        android:id="@+id/func_desc"
+        android:textSize="20sp"
+        android:text="@string/func_desc"
+        android:textColor="#003bff"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
