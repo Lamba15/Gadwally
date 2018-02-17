@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.lamba.gadwally.Tables.Weekly;
+
 public class Main_Interface extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ViewPager pager;
@@ -77,8 +79,7 @@ public class Main_Interface extends AppCompatActivity implements NavigationView.
         if (id == R.id.nav_profile) {
             Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_weekly_table) {
-            Toast.makeText(this, "My Weekly Table", Toast.LENGTH_SHORT).show();
-
+            startActivity(new Intent(getApplicationContext(), Weekly.class));
         } else if (id == R.id.nav_daily_table) {
             Toast.makeText(this, "My Daily Table", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_help_feedback) {

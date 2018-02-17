@@ -26,6 +26,7 @@ public class ViewPageAdabter extends PagerAdapter {
     //List for Titles.
     private String[] titles = {"Weekly Table", "Daily Table", "Contacts"};
 
+
     //List for Descriptions.
     private String[] descriptions = {"You Sure Need To Organize Your Weekly Works Don't Forget TO System it."
             , "Sudden Events and Works Every Day ... More Jobs Sure Needs to System."

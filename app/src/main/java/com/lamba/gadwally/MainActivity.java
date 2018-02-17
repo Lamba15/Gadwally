@@ -69,12 +69,13 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this , Main_Interface.class));
                 EditText username  = findViewById(R.id.username);
                 EditText password  = findViewById(R.id.password);
                 if (username.getText().toString().equals("admin") &&
                         password.getText().toString().equals("admin")){
                     Toast.makeText(MainActivity.this, "Login Successful >>>", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this , Main_Interface.class));
+
 
                 }
 
