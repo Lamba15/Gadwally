@@ -1,26 +1,36 @@
-package com.lamba.gadwally.Tables;
+package com.lamba.gadwally.Models;
 
 /**
   Created by Whelllava on 2/17/2018.
  */
 
-public class Model {
+public class TableInfo {
 
     String title;
     String dattime1;
     String dattime2;
     String desc;
+    String datdate1;
     int img;
 
-    public Model() {
+    public TableInfo() {
     }
 
-    public Model(String title, String dattime1, String dattime2, String desc, int img) {
+    public TableInfo(String title, String dattime1, String dattime2, String datdate1, String desc, int img) {
         this.title = title;
         this.dattime1 = dattime1;
         this.dattime2 = dattime2;
         this.desc = desc;
         this.img = img;
+        this.datdate1 = datdate1;
+    }
+
+    public String getDatdate1() {
+        return datdate1;
+    }
+
+    public void setDatdate1(String datdate1) {
+        this.datdate1 = datdate1;
     }
 
     public String getTitle() {

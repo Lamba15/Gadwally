@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview"
-    android:layout_width="200dp"
-    android:layout_height="250dp"
-    app:contentPadding="15dp"
+    android:layout_width="250dp"
+    android:layout_height="320dp"
     app:cardBackgroundColor="#d1d1d1"
     app:cardCornerRadius="6dp"
-    app:cardElevation="2dp">
-
+    app:cardElevation="2dp"
+    app:contentPadding="15dp"
+    tools:ignore="HardcodedText">
+    <ImageButton
+        android:contentDescription="@string/cancel"
+        android:id="@+id/weekly_cancel"
+        android:src="@drawable/ic_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,27 +24,33 @@
         android:orientation="vertical">
 
         <ImageButton
+            android:contentDescription="Image Picker ..."
             android:id="@+id/imageview"
-            android:layout_width="wrap_content"
-            android:src="@drawable/image"
-
-            android:layout_height="wrap_content"
-            android:background="#d1d1d1"
-            android:baselineAligned="false" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#bdbdbd"
+            android:scaleType="centerInside"
+            android:baselineAligned="false"
+            android:src="@drawable/question_mark" />
 
         <EditText
             android:id="@+id/texttitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/z2lotel3n5"
-            android:padding="10dp"
-            android:hint="title"
             android:layout_gravity="center"
             android:layout_margin="12dp"
+            android:background="@drawable/z2lotel3n5"
+            android:gravity="center"
+            android:ems="8"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:hint="Title Here"
+            android:padding="10dp"
             android:textColor="#2d2b2b"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,6 +58,7 @@
             android:orientation="horizontal">
 
             <Button
+                style="?attr/buttonStyle"
                 android:id="@+id/dat_time1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,11 +69,12 @@
                 android:textStyle="bold" />
 
             <Button
+                style="?attr/buttonStyle"
                 android:id="@+id/dat_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="end"
+                android:layout_weight="1"
                 android:padding="3dp"
                 android:textColor="#282525"
                 android:textSize="15sp"
@@ -67,22 +83,24 @@
 
         </LinearLayout>
 
-        <Button
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
             android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttons"
-            android:text="Done"
-            android:layout_marginTop="8dp"
+            android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="3dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttons"
             android:padding="3dp"
+            android:text="Submit"
             android:textColor="#eeeeee"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:spinning_bar_color="#fff"
+            app:spinning_bar_padding="6dp"
+            app:spinning_bar_width="4dp" />
 
     </LinearLayout>
-
 
 
 </android.support.v7.widget.CardView>

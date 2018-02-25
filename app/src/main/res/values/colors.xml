@@ -5,5 +5,15 @@
     <color name="colorAccent">#4043ff</color>
     <color name="black_brown">#dc413735</color>
     <color name="Overlay">#2f782800</color>
+    <color name="slide1">#efecb3</color>
+    <color name="slide2">#f1b9a8</color>
+    <color name="slide3">#98caf1</color>
+
+    <array name="colorarray">
+        <item>@color/slide3</item>
+        <item>@color/slide2</item>
+        <item>@color/slide1</item>
+
+    </array>
 
 </resources>

@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbackground"
     tools:context="com.lamba.gadwally.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/blackbox"
         android:orientation="vertical"
         android:padding="11dp"
-        app:layout_constraintBottom_toTopOf="@+id/relativelayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mydesc2">
@@ -35,6 +35,7 @@
             android:imeOptions="actionNext"
             android:inputType="text"
             android:maxLines="1"
+            android:text="@string/admin"
             android:textColor="#fff"
             android:textColorHint="#b6b3b3"
 
@@ -57,6 +58,7 @@
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1"
+            android:text="@string/admin"
             android:textColor="#fff"
             android:textColorHint="#b6b3b3" />
 
@@ -67,12 +69,13 @@
         android:id="@+id/relativelayout"
         android:layout_width="315dp"
         android:layout_height="15dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear1">
 
         <LinearLayout
             android:id="@+id/lineartext"
@@ -145,53 +148,63 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/shape"
         android:text="@string/login_btn"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativelayout" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/logocircle"
         android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/mylogo" />
 
     <TextView
         android:id="@+id/mydesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textSize="15sp"
-        android:textColor="#151515"
-        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:text="@string/system_your_day"
+        android:textColor="#151515"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/mydesc2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="System your Life"
         android:textColor="#151515"
         android:textSize="25sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mydesc" />
+        app:layout_constraintTop_toBottomOf="@+id/mydesc" />
 
 
 </android.support.constraint.ConstraintLayout>

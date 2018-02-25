@@ -1,15 +1,16 @@
-package com.lamba.gadwally.Tables;
+package com.lamba.gadwally.WeeklyTables;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 
 import com.lamba.gadwally.R;
 
 /**
-  Created by Lamba on 2/17/2018.
+ * Created by Lamba on 2/17/2018.
  */
 
 public class Weekly extends AppCompatActivity {
@@ -24,7 +25,9 @@ public class Weekly extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewpager_in_table);
         tabLayout = findViewById(R.id.tablelayout);
-
+        Toolbar  toolbar = findViewById(R.id.weekly_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         WeekPager adabter = new WeekPager(getSupportFragmentManager());
@@ -41,4 +44,6 @@ public class Weekly extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
+
+
 }

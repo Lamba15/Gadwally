@@ -1,4 +1,4 @@
-package com.lamba.gadwally.Tables;
+package com.lamba.gadwally.WeeklyTables;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -6,9 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
 
 import java.util.List;
@@ -19,11 +22,12 @@ import java.util.List;
 
 public class RecycleViewAdabter extends RecyclerView.Adapter<RecycleViewAdabter.MyViewHolder> {
     Context ctx;
-    List<Model> models;
+    List<TableInfo> tableInfos;
+    int lastposition = -1;
 
-    public RecycleViewAdabter(Context ctx, List<Model> models) {
+    public RecycleViewAdabter(Context ctx, List<TableInfo> tableInfos) {
         this.ctx = ctx;
-        this.models = models;
+        this.tableInfos = tableInfos;
     }
 
     @Override
@@ -36,28 +40,37 @@ public class RecycleViewAdabter extends RecyclerView.Adapter<RecycleViewAdabter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.title.setText(models.get(position).getTitle());
-        holder.timer1.setText(models.get(position).getDattime1());
-        holder.timer2.setText(models.get(position).getDattime2());
-        holder.img.setImageResource(models.get(position).getImg());
+        holder.title.setText(tableInfos.get(position).getTitle());
+        holder.timer1.setText(tableInfos.get(position).getDattime1());
+        holder.timer2.setText(tableInfos.get(position).getDattime2());
+        holder.img.setImageResource(tableInfos.get(position).getImg());
 
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                Intent intent = new Intent(ctx , Description.class);
-//                intent.putExtra("Title" , models.get(position).getTitle());
-//                intent.putExtra("Category" , models.get(position).getCategory());
-//                intent.putExtra("Description" , models.get(position).getDescription());
-//                intent.putExtra("Image" , models.get(position).getImage());
+//                intent.putExtra("Title" , tableInfos.get(position).getTitle());
+//                intent.putExtra("Category" , tableInfos.get(position).getCategory());
+//                intent.putExtra("Description" , tableInfos.get(position).getDescription());
+//                intent.putExtra("Image" , tableInfos.get(position).getImage());
 //                ctx.startActivity(intent);
 //
 //            }
 //        });
+        if (position > lastposition) {
+
+            Animation animation = AnimationUtils.loadAnimation(ctx,
+                    R.anim.recycler_view_slide);
+            animation.setStartOffset(100);
+
+            holder.itemView.startAnimation(animation);
+            lastposition = position;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return models.size();
+        return tableInfos.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

@@ -1,12 +1,13 @@
 package com.lamba.gadwally;
 
 
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -18,7 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.lamba.gadwally.Tables.Weekly;
+import com.lamba.gadwally.DailyTable.DailyTable;
+import com.lamba.gadwally.WeeklyTables.Weekly;
 
 public class Main_Interface extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +37,9 @@ public class Main_Interface extends AppCompatActivity implements NavigationView.
         pager = findViewById(R.id.viewpager);
         myadabter = new ViewPageAdabter(getApplicationContext());
         pager.setAdapter(myadabter);
+
+        TabLayout tabLayout = findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(pager, true);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,6 +86,7 @@ public class Main_Interface extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_weekly_table) {
             startActivity(new Intent(getApplicationContext(), Weekly.class));
         } else if (id == R.id.nav_daily_table) {
+            startActivity(new Intent(getApplicationContext(), DailyTable.class));
             Toast.makeText(this, "My Daily Table", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_help_feedback) {
             Toast.makeText(this, "Help & Feedback", Toast.LENGTH_SHORT).show();

@@ -37,4 +37,5 @@
     <string name="func_image">View Func Image</string>
     <string name="func_name">Function Title</string>
     <string name="func_desc">Function Description</string>
+    <string name="title_activity_daily_table">DailyTable</string>
 </resources>

@@ -1,10 +1,8 @@
 package com.lamba.gadwally;
 
 import android.content.Context;
-
 import android.graphics.Color;
 import android.graphics.Typeface;
-
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +67,7 @@ public class ViewPageAdabter extends PagerAdapter {
         ImageView img = view.findViewById(R.id.func_img);
         TextView title = view.findViewById(R.id.func_text);
         TextView desci = view.findViewById(R.id.func_desc);
-        Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/bauhaus93.ttf");
+        Typeface face = Typeface.createFromAsset(context.getAssets(),"fonts/bauhaus93.ttf");
 
         linearLayout.setBackgroundColor(backgroundcolors[position]);
 

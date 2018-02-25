@@ -1,10 +1,13 @@
-package com.lamba.gadwally.Tables;
+package com.lamba.gadwally.WeeklyTables;
 
-import android.app.DatePickerDialog;
+
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -15,36 +18,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 /**
- * Created by Whelllava on 2/16/2018.
+  Created by Whelllava on 2/16/2018.
  */
 
-public class Saturdayfrag extends Fragment {
+public class Sundayfrag extends Fragment {
     View view;
-    RecyclerView recyclerView;
-    RecycleViewAdabter recycleViewAdabter;
-    List<Model> model;
+    List<TableInfo> tableInfo;
     Dialog alertDialog;
     FloatingActionButton fab;
 
-    public Saturdayfrag() {
+    public Sundayfrag() {
     }
 
     @Nullable
@@ -53,7 +52,7 @@ public class Saturdayfrag extends Fragment {
         view = inflater.inflate(R.layout.weekday, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycleview);
-        RecycleViewAdabter adabter = new RecycleViewAdabter(getContext(), model);
+        RecycleViewAdabter adabter = new RecycleViewAdabter(getContext(), tableInfo);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setAdapter(adabter);
 
@@ -68,7 +67,15 @@ public class Saturdayfrag extends Fragment {
                 EditText title = (EditText) mview.findViewById(R.id.texttitle);
                 final Button datestart = (Button) mview.findViewById(R.id.dat_time1);
                 final Button dateend = (Button) mview.findViewById(R.id.dat_time2);
-                Button done = (Button) mview.findViewById(R.id.done);
+                final CircularProgressButton done = (CircularProgressButton) mview.findViewById(R.id.done);
+                ImageButton cancel = (ImageButton) mview.findViewById(R.id.weekly_cancel);
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                    }
+                });
 
 
                 dateend.setOnClickListener(new View.OnClickListener() {
@@ -84,17 +91,16 @@ public class Saturdayfrag extends Fragment {
 
                                         String am;
 
-                                        if (hour >= 12){
+                                        if (hour >= 12) {
                                             hour = hour - 12;
                                             am = " PM";
-                                        }
-                                        else {
+                                        } else {
                                             am = " AM";
                                         }
 
                                         dateend.setText(String.valueOf(hour) + ":" + String.valueOf(minute) + am);
                                     }
-                                },hour,minute,false);
+                                }, hour, minute, false);
                         mDatePicker.setTitle("Choose time");
                         mDatePicker.show();
                     }
@@ -108,23 +114,22 @@ public class Saturdayfrag extends Fragment {
                         int hour = calendar.get(Calendar.HOUR_OF_DAY);
                         int minute = calendar.get(Calendar.MINUTE);
                         TimePickerDialog mDatePicker =
-                        new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                                new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
 
-                                String am;
+                                        String am;
 
-                                if (hour >= 12){
-                                    hour = hour - 12;
-                                    am = " PM";
-                                }
-                                else {
-                                    am = " AM";
-                                }
+                                        if (hour >= 12) {
+                                            hour = hour - 12;
+                                            am = " PM";
+                                        } else {
+                                            am = " AM";
+                                        }
 
-                                datestart.setText(String.valueOf(hour) + ":" + String.valueOf(minute) + am);
-                            }
-                        },hour,minute,false);
+                                        datestart.setText(String.valueOf(hour) + ":" + String.valueOf(minute) + am);
+                                    }
+                                }, hour, minute, false);
                         mDatePicker.setTitle("Choose time");
                         mDatePicker.show();
                     }
@@ -141,9 +146,30 @@ public class Saturdayfrag extends Fragment {
                 done.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        @SuppressLint("StaticFieldLeak") AsyncTask<String,String,String> submit = new AsyncTask<String, String, String>() {
+                            @Override
+                            protected String doInBackground(String... strings) {
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                return "done";
+                            }
 
+                            @Override
+                            protected void onPostExecute(String s) {
+                                if (s.equals("done")){
+                                    Toast.makeText(getActivity(), "Need TO get it into Database", Toast.LENGTH_SHORT).show();
+                                    done.doneLoadingAnimation(Color.parseColor("#263238"), BitmapFactory.decodeResource(getResources(),R.drawable.ic_done_white_48dp));
+                                }
+                            }
+                        };
+                        done.startAnimation();
+                        submit.execute();
                     }
                 });
+
 
                 alertDialog = new Dialog(getActivity());
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -159,14 +185,11 @@ public class Saturdayfrag extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        model = new ArrayList<>();
-        model.add(new Model("Sleep", "00:00", "08:00", "this is My Time for go to bed", R.drawable.sleep));
-        model.add(new Model("Sleep", "00:00", "08:00", "this is My Time for go to bed", R.drawable.sleep));
-        model.add(new Model("Work", "09:00", "15:00", "I Have Alot of Tasks Today", R.drawable.work));
-        model.add(new Model("Study", "16:30", "18:30", "This is the Day for Economy", R.drawable.study));
-        model.add(new Model("My love", "19:00", "20:30", "My Darling W8ting", R.drawable.mylove));
-        model.add(new Model("Gym", "21:30", "23:30", "Help me My God", R.drawable.gym));
-
-
+        tableInfo = new ArrayList<>();
+        tableInfo.add(new TableInfo("Sleep", "00:00", "08:00",null, "this is My Time for go to bed", R.drawable.sleep));
+        tableInfo.add(new TableInfo("Work", "09:00", "15:00",null, "I Have Alot of Tasks Today", R.drawable.work));
+        tableInfo.add(new TableInfo("Study", "16:30", "18:30",null, "This is the Day for Economy", R.drawable.study));
+        tableInfo.add(new TableInfo("My love", "19:00", "20:30",null, "My Darling W8ting", R.drawable.mylove));
+        tableInfo.add(new TableInfo("Gym", "21:30", "23:30",null, "Help me My God", R.drawable.gym));
     }
 }

@@ -1,4 +1,4 @@
-package com.lamba.gadwally.Tables;
+package com.lamba.gadwally.WeeklyTables;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
