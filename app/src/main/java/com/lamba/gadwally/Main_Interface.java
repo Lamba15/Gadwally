@@ -3,6 +3,7 @@ package com.lamba.gadwally;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lamba.gadwally.DailyTable.DailyTable;
@@ -41,9 +43,14 @@ public class Main_Interface extends AppCompatActivity implements NavigationView.
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(pager, true);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
+        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/bauhaus93.ttf");
+        TextView tv_gadwally = findViewById(R.id.toolbar_title_gadwally);
+        tv_gadwally.setTypeface(face);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

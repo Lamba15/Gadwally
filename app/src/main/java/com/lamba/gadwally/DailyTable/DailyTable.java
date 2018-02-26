@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ import android.widget.Toast;
 
 import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -123,8 +126,12 @@ public class DailyTable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_table);
         Toolbar toolbar = findViewById(R.id.daily_toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        TextView tv_daily = findViewById(R.id.toolbar_title_daily);
+        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/bauhaus93.ttf");
+        tv_daily.setTypeface(face);
 
         //Daily RecyclerView and Array
         List<TableInfo> content = new ArrayList<>();
