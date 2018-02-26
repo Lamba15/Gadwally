@@ -13,30 +13,22 @@ import android.widget.TextView;
 
 
 public class ViewPageAdabter extends PagerAdapter {
-    private Context context;
-    private LayoutInflater inflater;
-
-
-
+     Context context;
+     LayoutInflater inflater;
     // List for Images.
-    private int[] images = {R.drawable.weekly1, R.drawable.calendar512, R.drawable.contacts0circle};
-
+     int[] images = {R.drawable.weekly1, R.drawable.calendar512, R.drawable.contacts0circle};
     //List for Titles.
-    private String[] titles = {"Weekly Table", "Daily Table", "Contacts"};
-
-
+     String[] titles = {"Weekly Table", "Daily Table", "Contacts"};
     //List for Descriptions.
-    private String[] descriptions = {"You Sure Need To Organize Your Weekly Works Don't Forget TO System it."
+     String[] descriptions = {"You Sure Need To Organize Your Weekly Works Don't Forget TO System it."
             , "Sudden Events and Works Every Day ... More Jobs Sure Needs to System."
             , "Your Mobile Stolen or Formatted  , Don't Worry Your All Contacts in Safe."};
-
-
     //List for Background Colors.
-    private int[] backgroundcolors = {Color.argb(154,236,222,143),
+     int[] backgroundcolors = {Color.argb(154,236,222,143),
             Color.argb(154,236,166,143),
             Color.argb(154,143,169,236)};
     //List for textcolors.
-    private int[] textcolors = {Color.rgb(0,40,172),
+     int[] textcolors = {Color.rgb(0,40,172),
             Color.rgb(2,97,6),
             Color.rgb(140,9,2)};
 

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview"
-    android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_width="335dp"
+    android:layout_height="200dp"
     android:layout_margin="3dp"
-    app:cardBackgroundColor="#ffd740"
+    app:cardBackgroundColor="#4fc3f7"
     app:cardCornerRadius="6dp"
     app:cardElevation="2dp"
     app:contentPadding="5dp"
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="#FFFFD740"
+        android:background="#4fc3f7"
         android:contentDescription="@string/cancel"
         android:src="@drawable/ic_cancel" />
 
@@ -38,11 +38,12 @@
                 android:id="@+id/image_picker2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="#fcc700"
+                android:background="#4fc3f7"
                 android:baselineAligned="false"
+                android:src="@drawable/question_mark"
                 android:contentDescription="Image Picker ..."
                 android:scaleType="centerInside"
-                android:src="@drawable/question_mark" />
+                 />
 
         </LinearLayout>
 
@@ -52,12 +53,12 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/texttitle2"
+                android:id="@+id/text_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
-                android:background="@drawable/z2lotel3n5"
+                android:background="@drawable/title_shape_white"
                 android:ems="7"
                 android:gravity="center"
                 android:hint="Title Here"
@@ -79,9 +80,9 @@
                     style="?attr/buttonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FBC02D"
+                    android:background="@drawable/button_time_shape_daily"
                     android:padding="3dp"
-                    android:textColor="#282525"
+                    android:textColor="#01579b"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -96,9 +97,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:background="#FBC02D"
+                    android:background="@drawable/button_time_shape_daily"
                     android:padding="3dp"
-                    android:textColor="#282525"
+                    android:textColor="#d50000"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -126,12 +127,10 @@
 
     <Button
         android:id="@+id/dat_date1"
-        style="?attr/buttonStyle"
-        android:background="#F9A825"
+        android:background="@drawable/button_date_shape_daily"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_weight="1"
         android:padding="3dp"
         android:textColor="#282525"
         android:textSize="15sp"

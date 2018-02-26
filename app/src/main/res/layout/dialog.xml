@@ -25,7 +25,7 @@
 
         <ImageButton
             android:contentDescription="Image Picker ..."
-            android:id="@+id/imageview"
+            android:id="@+id/weekly_image_picker"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="#bdbdbd"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="12dp"
-            android:background="@drawable/z2lotel3n5"
+            android:background="@drawable/title_shape_white"
             android:gravity="center"
             android:ems="8"
             android:imeOptions="actionDone"

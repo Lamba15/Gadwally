@@ -15,9 +15,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,28 +29,32 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.lamba.gadwally.Models.ImageModel;
 import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Currency;
 import java.util.List;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class DailyTable extends AppCompatActivity {
-    Context context;
-    Dialog alertDialog;
+    Dialog imagedialog , alertDialog;
+    TextView tv_daily;
+    ImageButton imgpick , pickercancel , imagecancel;
+    EditText editText , searchtext;
     FloatingActionButton fab;
+    List<ImageModel> modelimage;
+    RecycleViewImageAdabter pickeradabter;
+    RecyclerView recyclerView , recyclerViewpicker;
 
 
     public class RecycleViewAdabter extends RecyclerView.Adapter<RecycleViewAdabter.MyViewHolder> {
@@ -76,16 +83,13 @@ public class DailyTable extends AppCompatActivity {
             holder.dattime3.setText(dailycontent.get(position).getDattime1());
             holder.dattime4.setText(dailycontent.get(position).getDattime2());
             holder.datdate1.setText(dailycontent.get(position).getDatdate1());
-//            holder.cardView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(ctx, Description.class);
-//                    intent.putExtra("Title", dailycontent.get(position).getTitle());
-//                    intent.putExtra("Image", dailycontent.get(position).getImage());
-//                    ctx.startActivity(intent);
-//
-//                }
-//            });
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                }
+            });
 
             if (position > lastposition) {
 
@@ -121,16 +125,77 @@ public class DailyTable extends AppCompatActivity {
 
     }
 
+    public class RecycleViewImageAdabter extends RecyclerView.Adapter<RecycleViewImageAdabter.MyViewHolder> {
+        Context ctx;
+        List<ImageModel> models;
+
+        public RecycleViewImageAdabter(Context ctx, List<ImageModel> models) {
+            this.ctx = ctx;
+            this.models = models;
+        }
+
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view;
+            LayoutInflater inflater = LayoutInflater.from(ctx);
+            view = inflater.inflate(R.layout.imagepicker_recycler_content, parent, false);
+            return new MyViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, final int position) {
+            holder.img.setImageResource(models.get(position).getImg());
+            holder.title.setText(models.get(position).getTitle());
+
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    imgpick.setImageResource(models.get(position).getImg());
+                    editText.setText(models.get(position).getTitle());
+                    imagedialog.dismiss();
+
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return models.size();
+        }
+
+        //for Filter List in Bottom of codes .
+        public void filterlist(List<ImageModel> filteredlist) {
+            models = filteredlist;
+            notifyDataSetChanged();
+
+        }
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            ImageView img;
+            TextView title;
+            CardView cardView;
+
+            public MyViewHolder(View itemView) {
+                super(itemView);
+                img = itemView.findViewById(R.id.weekly_image_picker);
+                title = itemView.findViewById(R.id.texttitle);
+                cardView = itemView.findViewById(R.id.card_content_picker);
+            }
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_table);
+
         Toolbar toolbar = findViewById(R.id.daily_toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        TextView tv_daily = findViewById(R.id.toolbar_title_daily);
-        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/bauhaus93.ttf");
+        tv_daily = findViewById(R.id.toolbar_title_daily);
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/bauhaus93.ttf");
         tv_daily.setTypeface(face);
 
         //Daily RecyclerView and Array
@@ -155,7 +220,7 @@ public class DailyTable extends AppCompatActivity {
         content.add(new TableInfo("Sleep", "00:00", "00:00", "12:12:2025", null, R.drawable.study));
 
         // Adapter and Layout Manager
-        RecyclerView recyclerView = findViewById(R.id.daily_recycleview);
+        recyclerView = findViewById(R.id.daily_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new RecycleViewAdabter(this, content));
 
@@ -164,18 +229,107 @@ public class DailyTable extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 alertDialog = new Dialog(DailyTable.this);
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.daily_dialog);
                 alertDialog.setCancelable(false);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 alertDialog.show();
-                ImageButton imagecancel = alertDialog.findViewById(R.id.cancel_icon);
-                ImageButton imgselect2 = alertDialog.findViewById(R.id.image_picker2);
+
+
+                imagecancel = alertDialog.findViewById(R.id.cancel_icon);
+                imgpick = alertDialog.findViewById(R.id.image_picker2);
+                editText = alertDialog.findViewById(R.id.text_title2);
+                imagedialog = new Dialog(DailyTable.this);
+
+                imgpick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        imagedialog.setContentView(R.layout.imagepicker_content);
+                        searchtext = imagedialog.findViewById(R.id.search_bar_image_picker);
+                        searchtext.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                filter(s.toString());
+
+                            }
+                        });
+
+
+                        recyclerViewpicker = imagedialog.findViewById(R.id.recycler_image_picker);
+                        modelimage = new ArrayList<>();
+                        modelimage.add(new ImageModel(R.drawable.work, "Work"));
+                        modelimage.add(new ImageModel(R.drawable.weekly1, "Weekly 1"));
+                        modelimage.add(new ImageModel(R.drawable.study, "Study"));
+                        modelimage.add(new ImageModel(R.drawable.sleep, "Sleep"));
+                        modelimage.add(new ImageModel(R.drawable.mylove, "My Love"));
+                        modelimage.add(new ImageModel(R.drawable.gym, "Gym"));
+                        modelimage.add(new ImageModel(R.drawable.work, "Work"));
+                        modelimage.add(new ImageModel(R.drawable.weekly1, "Weekly 1"));
+                        modelimage.add(new ImageModel(R.drawable.study, "Study"));
+                        modelimage.add(new ImageModel(R.drawable.sleep, "Sleep"));
+                        modelimage.add(new ImageModel(R.drawable.mylove, "My Love"));
+                        modelimage.add(new ImageModel(R.drawable.gym, "Gym"));
+                        pickeradabter = new RecycleViewImageAdabter(getApplicationContext(), modelimage);
+                        recyclerViewpicker.setAdapter(pickeradabter);
+                        recyclerViewpicker.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+
+
+                        pickercancel = imagedialog.findViewById(R.id.close_picker);
+
+                        pickercancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                imagedialog.dismiss();
+                            }
+                        });
+                        imagedialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        imagedialog.show();
+                    }
+                });
+
+                final CircularProgressButton done = alertDialog.findViewById(R.id.done2);
+                done.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> submit = new AsyncTask<String, String, String>() {
+                            @Override
+                            protected String doInBackground(String... strings) {
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                return "done";
+                            }
+
+                            @Override
+                            protected void onPostExecute(String s) {
+                                if (s.equals("done")) {
+                                    Toast.makeText(DailyTable.this, "Need TO get it into Database", Toast.LENGTH_SHORT).show();
+                                    done.doneLoadingAnimation(Color.parseColor("#263238"), BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+                                }
+                            }
+                        };
+                        done.startAnimation();
+                        submit.execute();}
+                });
+
+
                 final Button datstart2 = alertDialog.findViewById(R.id.dat_time3);
                 final Button datend2 = alertDialog.findViewById(R.id.dat_time4);
                 final Button dailydate = alertDialog.findViewById(R.id.dat_date1);
-                final CircularProgressButton done = alertDialog.findViewById(R.id.done2);
 
                 datstart2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -251,9 +405,9 @@ public class DailyTable extends AppCompatActivity {
                                 dailydate.setText(String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year));
                             }
 
-                        },day,month,year);
+                        }, day, month, year);
                         mDatepicker.setTitle("Choose Date");
-                        mDatepicker.updateDate(2018,1,1);
+                        mDatepicker.updateDate(2018, 1, 1);
                         mDatepicker.show();
                     }
                 });
@@ -263,38 +417,20 @@ public class DailyTable extends AppCompatActivity {
                         alertDialog.dismiss();
                     }
                 });
-                done.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                     @SuppressLint("StaticFieldLeak") AsyncTask<String,String,String> submit = new AsyncTask<String, String, String>() {
-                         @Override
-                         protected String doInBackground(String... strings) {
-                             try {
-                                 Thread.sleep(1000);
-                             } catch (InterruptedException e) {
-                                 e.printStackTrace();
-                             }
-                             return "done";
-                         }
 
-                         @Override
-                         protected void onPostExecute(String s) {
-                             if (s.equals("done")){
-                                 Toast.makeText(DailyTable.this, "Need TO get it into Database", Toast.LENGTH_SHORT).show();
-                                 done.doneLoadingAnimation(Color.parseColor("#263238"), BitmapFactory.decodeResource(getResources(),R.drawable.ic_done_white_48dp));
-                             }
-                         }
-                     };
-                     done.startAnimation();
-                     submit.execute();
-
-
-
-
-                    }
-                });
 
             }
         });
+    }
+
+    // This is Search Bar Filter for get what you want for Avatar.
+    private void filter(String text) {
+        List<ImageModel> imagetitles = new ArrayList<>();
+        for (ImageModel item : modelimage) {
+            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                imagetitles.add(item);
+            }
+        }
+        pickeradabter.filterlist(imagetitles);
     }
 }

@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lamba.gadwally.DailyTable.DailyTable;
+import com.lamba.gadwally.Models.ImageModel;
 import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
 
@@ -48,12 +50,7 @@ public class RecycleViewAdabter extends RecyclerView.Adapter<RecycleViewAdabter.
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(ctx , Description.class);
-//                intent.putExtra("Title" , tableInfos.get(position).getTitle());
-//                intent.putExtra("Category" , tableInfos.get(position).getCategory());
-//                intent.putExtra("Description" , tableInfos.get(position).getDescription());
-//                intent.putExtra("Image" , tableInfos.get(position).getImage());
-//                ctx.startActivity(intent);
+//
 //
 //            }
 //        });
@@ -87,4 +84,7 @@ public class RecycleViewAdabter extends RecyclerView.Adapter<RecycleViewAdabter.
             cardView = itemView.findViewById(R.id.cardview);
         }
     }
+
+
+
 }

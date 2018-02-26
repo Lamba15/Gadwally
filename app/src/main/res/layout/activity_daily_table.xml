@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:background="#FFF9C4"
+            android:background="#ffcdd2"
             tools:layout_editor_absoluteY="58dp" />
     </LinearLayout>
 
