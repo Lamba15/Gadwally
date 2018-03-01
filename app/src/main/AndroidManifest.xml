@@ -7,13 +7,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="portrait">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,19 +23,21 @@
         <activity
             android:name=".Main_Interface"
             android:label="@string/title_activity_main__interface"
-            android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".WeeklyTables.Weekly"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Main_Interface"/>
+            android:parentActivityName=".Main_Interface"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DailyTable.DailyTable"
             android:label="@string/title_activity_daily_table"
-            android:theme="@style/AppTheme"
+            android:parentActivityName=".Main_Interface"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Main_Interface"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".Main_Interface"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

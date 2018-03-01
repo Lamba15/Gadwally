@@ -35,15 +35,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.lamba.gadwally.Models.ImageModel;
 import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class DailyTable extends AppCompatActivity {
@@ -125,64 +122,66 @@ public class DailyTable extends AppCompatActivity {
 
     }
 
-    public class RecycleViewImageAdabter extends RecyclerView.Adapter<RecycleViewImageAdabter.MyViewHolder> {
-        Context ctx;
-        List<ImageModel> models;
 
-        public RecycleViewImageAdabter(Context ctx, List<ImageModel> models) {
-            this.ctx = ctx;
-            this.models = models;
-        }
 
-        @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view;
-            LayoutInflater inflater = LayoutInflater.from(ctx);
-            view = inflater.inflate(R.layout.imagepicker_recycler_content, parent, false);
-            return new MyViewHolder(view);
-        }
+        public class RecycleViewImageAdabter extends RecyclerView.Adapter<RecycleViewImageAdabter.MyViewHolder> {
+            Context ctx;
+            List<ImageModel> models;
 
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, final int position) {
-            holder.img.setImageResource(models.get(position).getImg());
-            holder.title.setText(models.get(position).getTitle());
+            public RecycleViewImageAdabter(Context ctx, List<ImageModel> models) {
+                this.ctx = ctx;
+                this.models = models;
+            }
 
-            holder.cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    imgpick.setImageResource(models.get(position).getImg());
-                    editText.setText(models.get(position).getTitle());
-                    imagedialog.dismiss();
+            @Override
+            public RecycleViewImageAdabter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view;
+                LayoutInflater inflater = LayoutInflater.from(ctx);
+                view = inflater.inflate(R.layout.imagepicker_recycler_content, parent, false);
+                return new MyViewHolder(view);
+            }
 
+            @Override
+            public void onBindViewHolder(RecycleViewImageAdabter.MyViewHolder holder, final int position) {
+                holder.img.setImageResource(models.get(position).getImg());
+                holder.title.setText(models.get(position).getTitle());
+
+                holder.cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        imgpick.setImageResource(models.get(position).getImg());
+                        editText.setText(models.get(position).getTitle());
+                        imagedialog.dismiss();
+
+                    }
+                });
+            }
+
+            @Override
+            public int getItemCount() {
+                return models.size();
+            }
+
+            //for Filter List in Bottom of codes .
+            public void filterlist(List<ImageModel> filteredlist) {
+                models = filteredlist;
+                notifyDataSetChanged();
+
+            }
+
+            public class MyViewHolder extends RecyclerView.ViewHolder {
+                ImageView img;
+                TextView title;
+                CardView cardView;
+
+                public MyViewHolder(View itemView) {
+                    super(itemView);
+                    img = itemView.findViewById(R.id.image_choose);
+                    title = itemView.findViewById(R.id.title_choose);
+                    cardView = itemView.findViewById(R.id.card_content_picker);
                 }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return models.size();
-        }
-
-        //for Filter List in Bottom of codes .
-        public void filterlist(List<ImageModel> filteredlist) {
-            models = filteredlist;
-            notifyDataSetChanged();
-
-        }
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView img;
-            TextView title;
-            CardView cardView;
-
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                img = itemView.findViewById(R.id.weekly_image_picker);
-                title = itemView.findViewById(R.id.texttitle);
-                cardView = itemView.findViewById(R.id.card_content_picker);
             }
         }
-    }
 
 
     @Override
@@ -221,8 +220,8 @@ public class DailyTable extends AppCompatActivity {
 
         // Adapter and Layout Manager
         recyclerView = findViewById(R.id.daily_recycleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecycleViewAdabter(this, content));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(new RecycleViewAdabter(getApplicationContext(), content));
 
         fab = (FloatingActionButton) findViewById(R.id.addnew_daily);
 

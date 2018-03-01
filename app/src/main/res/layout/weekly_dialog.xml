@@ -5,7 +5,7 @@
     android:id="@+id/cardview"
     android:layout_width="250dp"
     android:layout_height="320dp"
-    app:cardBackgroundColor="#d1d1d1"
+    app:cardBackgroundColor="#607d8b"
     app:cardCornerRadius="6dp"
     app:cardElevation="2dp"
     app:contentPadding="15dp"
@@ -14,6 +14,7 @@
         android:contentDescription="@string/cancel"
         android:id="@+id/weekly_cancel"
         android:src="@drawable/ic_cancel"
+        android:background="#607d8b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"/>
@@ -28,7 +29,7 @@
             android:id="@+id/weekly_image_picker"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="#bdbdbd"
+            android:background="#607d8b"
             android:scaleType="centerInside"
             android:baselineAligned="false"
             android:src="@drawable/question_mark" />
@@ -47,7 +48,7 @@
             android:maxLines="1"
             android:hint="Title Here"
             android:padding="10dp"
-            android:textColor="#2d2b2b"
+            android:textColor="#ff1744"
             android:textSize="15sp"
             android:textStyle="bold"
             />
@@ -64,10 +65,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="3dp"
-                android:textColor="#282525"
+                android:background="@drawable/button_time_shape_daily"
+                android:textColor="#d50000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:src="@drawable/daily_timer"
+                />
             <Button
                 style="?attr/buttonStyle"
                 android:id="@+id/dat_time2"
@@ -76,7 +82,8 @@
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:padding="3dp"
-                android:textColor="#282525"
+                android:background="@drawable/button_time_shape_daily"
+                android:textColor="#01579b"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 

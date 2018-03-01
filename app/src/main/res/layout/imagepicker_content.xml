@@ -5,7 +5,7 @@
     android:layout_width="295dp"
     android:layout_height="450dp"
     android:layout_gravity="center"
-    app:cardBackgroundColor="#88a783"
+    app:cardBackgroundColor="#33691e"
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp"
     tools:ignore="HardcodedText">
@@ -40,7 +40,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="3dp"
-                android:background="#88a783"
+                android:background="#33691e"
                 android:contentDescription="close"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_cancel" />

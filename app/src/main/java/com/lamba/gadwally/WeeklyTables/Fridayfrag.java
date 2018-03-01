@@ -29,7 +29,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.lamba.gadwally.DailyTable.DailyTable;
 import com.lamba.gadwally.Models.ImageModel;
 import com.lamba.gadwally.Models.TableInfo;
 import com.lamba.gadwally.R;
@@ -130,7 +129,7 @@ public class Fridayfrag extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View mview = getLayoutInflater().inflate(R.layout.dialog, null);
+                View mview = getLayoutInflater().inflate(R.layout.weekly_dialog, null);
 
                 imgpick = mview.findViewById(R.id.weekly_image_picker);
                 editText = mview.findViewById(R.id.texttitle);
@@ -258,7 +257,7 @@ public class Fridayfrag extends Fragment {
                                         dateend.setText(String.valueOf(hour) + ":" + String.valueOf(minute) + am);
                                     }
                                 }, hour, minute, false);
-                        mDatePicker.setTitle("Choose time");
+                        mDatePicker.setTitle("Choose End time");
                         mDatePicker.show();
                     }
                 });
@@ -287,7 +286,7 @@ public class Fridayfrag extends Fragment {
                                         datestart.setText(String.valueOf(hour) + ":" + String.valueOf(minute) + am);
                                     }
                                 }, hour, minute, false);
-                        mDatePicker.setTitle("Choose time");
+                        mDatePicker.setTitle("Choose Start time");
                         mDatePicker.show();
                     }
                 });

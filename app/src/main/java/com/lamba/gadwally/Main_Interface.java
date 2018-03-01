@@ -89,6 +89,7 @@ public class Main_Interface extends AppCompatActivity implements NavigationView.
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_weekly_table) {
             startActivity(new Intent(getApplicationContext(), Weekly.class));

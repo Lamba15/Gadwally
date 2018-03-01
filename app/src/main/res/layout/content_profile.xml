@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:ignore="HardcodedText"
+    tools:showIn="@layout/activity_profile">
+
+    <RelativeLayout
+        android:id="@+id/infoclick1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#b9a1887f"
+        android:clickable="true"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivPersonalItem1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_account_box"
+
+            />
+
+        <TextView
+            android:id="@+id/tvPersonalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@id/ivPersonalItem1"
+            android:text="Profile Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ECEFF1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPersonalInfo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPersonalInfo"
+            android:layout_toEndOf="@id/ivPersonalItem1"
+            android:text="Job"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#bfeceff1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPersonalInfo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPersonalInfo2"
+            android:layout_toEndOf="@+id/ivPersonalItem1"
+            android:text=" @Profile"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#97eceff1"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/infoclick2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/ivEmailItem1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/profile_email" />
+
+                <TextView
+                    android:id="@+id/tvEmailInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivEmailItem1"
+                    android:text="Email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#072438"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmailInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvEmailInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/ivEmailItem1"
+                    android:text="PersonalEmail@Email.com"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#0c4166"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmailInfo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvEmailInfo2"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/ivEmailItem1"
+                    android:text="WorkEmail@email.com"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#156dab"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/editEmail1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                   android:background="@drawable/profile_add_button"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile_add" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tvEmailInfo3"
+                    android:layout_marginTop="8dp"
+                    android:background="#333131" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoclick3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/ivContactItem1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/profile_contact" />
+
+                <TextView
+                    android:id="@+id/tvContactInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivContactItem1"
+                    android:text="Contact"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#072438"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvContactInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvContactInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/ivContactItem1"
+                    android:text="(000) 000-0000"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#0c4166"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvContactInfo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvContactInfo2"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/ivContactItem1"
+                    android:text="(123)456-7890"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#156dab"
+                    android:textStyle="bold" />
+                <ImageButton
+                    android:id="@+id/editEmail2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/profile_add_button"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile_add" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tvContactInfo3"
+                    android:layout_marginTop="8dp"
+                    android:background="#333131" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoclick4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/ivLocationItem1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/profile_location" />
+
+                <TextView
+                    android:id="@+id/tvLocationInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivLocationItem1"
+                    android:text="Location"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#072438"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLocationInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvLocationInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/ivLocationItem1"
+                    android:text="12 Side Street 1 , Main Street"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#0c4166"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLocationInfo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvLocationInfo2"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/ivLocationItem1"
+                    android:text="24 Side Street 2 , Main Street"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#156dab"
+                    android:textStyle="bold" />
+                <ImageButton
+                    android:id="@+id/editEmail3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/profile_add_button"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile_add" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tvLocationInfo3"
+                    android:layout_marginTop="8dp"
+                    android:background="#333131" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>
